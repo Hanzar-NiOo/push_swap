@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 		// }
 		// ft_pa(a, b);
 		// ft_pa(a, b);
-		ft_rb(a);
+		ft_rrb(a);
 		while (*a)
 		{
 			printf ("a_idx %li = ", (*a)->idx);

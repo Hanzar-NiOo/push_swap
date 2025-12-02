@@ -61,3 +61,25 @@ void    ft_rb(t_stack **b)
     last->next = first;
     printf ("rb\n");
 }
+
+void    ft_rrb(t_stack **b)
+{
+    t_stack *first;
+    t_stack *last;
+    t_stack *new_last;
+
+    if (!b || !*b || !(*b)->next)
+        return ;
+    first = *b;
+    last = *b;
+    while (last->next)
+    {
+        if (!last->next->next)
+            new_last = last;
+        last = last->next;
+    }
+    *b = last;
+    last->next = first;
+    new_last->next = NULL;
+    printf("rrb\n");
+}

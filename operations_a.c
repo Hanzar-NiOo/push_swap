@@ -61,3 +61,25 @@ void	ft_ra(t_stack **a)
 	last->next = first;
     printf ("ra\n");
 }
+
+void    ft_rra(t_stack **a)
+{
+    t_stack *first;
+    t_stack *last;
+    t_stack *new_last;
+
+    if (!a || !*a || !(*a)->next)
+        return ;
+    first = *a;
+    last = *a;
+    while (last->next)
+    {
+        if (!last->next->next)
+            new_last = last;
+        last = last->next;
+    }
+    *a = last;
+    last->next = first;
+    new_last->next = NULL;
+    printf("rra\n");
+}
