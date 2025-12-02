@@ -36,7 +36,7 @@ void	ft_pa(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (!*b)
+	if (!b || !*b)
 		return ;
 	tmp = *a;
 	*a = *b;
@@ -47,13 +47,17 @@ void	ft_pa(t_stack **a, t_stack **b)
 
 void	ft_ra(t_stack **a)
 {
-	t_stack	*tmp;
+    t_stack	*first;
+	t_stack	*last;
 
-	tmp = *a;
-	// tmp->next = NULL;
+	if (!a || !*a || !(*a)->next)
+		return ;
+	first = *a;
 	*a = (*a)->next;
-	while ((*a)->next)
-		*a = (*a)->next;
-	// tmp->prev = *a;
-	(*a)->next = tmp;
+	last = *a;
+	while (last->next)
+		last = last->next;
+	first->next = NULL;
+	last->next = first;
+    printf ("ra\n");
 }

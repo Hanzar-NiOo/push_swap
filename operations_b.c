@@ -36,11 +36,28 @@ void	ft_pb(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (!*a)
+	if (!a || !*a)
 		return ;
 	tmp = *b;
 	*b = *a;
 	*a = (*a)->next;
 	(*b)->next = tmp;
 	printf ("pb\n");
+}
+
+void    ft_rb(t_stack **b)
+{
+    t_stack *first;
+    t_stack *last;
+
+    if (!b || !*b || !(*b)->next)
+        return ;
+    first = *b;
+    *b = (*b)->next;
+    last = *b;
+    while (last->next)
+        last = last->next;
+    first->next = NULL;
+    last->next = first;
+    printf ("rb\n");
 }
