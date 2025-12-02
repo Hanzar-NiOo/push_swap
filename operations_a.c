@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 00:06:17 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 12:06:18 by hnioo            ###   ########.fr       */
+/*   Updated: 2025/12/02 13:33:46 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	ft_sa(t_stack **a)
 	printf ("sa\n");
 }
 
-// t_stack	*ft_pa(t_stack **b, t_stack **a)
-// {
-// 	t_stack	*head;
+void	ft_pa(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
 
-// 	head = b;
-// 	head->prev = NULL;
-// 	head = a;
-// 	a = head->next;
-// 	a->prev = head;
-// 	printf ("pa\n");
-// 	return (a);
-// }
+	if (!*b)
+		return ;
+	tmp = *a;
+	*a = *b;
+	*b = (*b)->next;
+	(*a)->next = tmp;
+	printf ("pa\n");
+}

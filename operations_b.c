@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 10:24:14 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 12:38:12 by hnioo            ###   ########.fr       */
+/*   Updated: 2025/12/02 13:36:51 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	ft_sb(t_stack **b)
 	printf ("sa\n");
 }
 
-void	ft_pb(t_stack **b, t_stack **a)
+void	ft_pb(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (!*b)
+	if (!*a)
 		return ;
 	tmp = *b;
 	*b = *a;
