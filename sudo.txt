@@ -1,0 +1,220 @@
+struct data type: 
+	long nbr
+	long index
+	pointer to next node in stack
+	pointer to previous node in the stack
+
+take argv
+then process
+	if argc is less than 2
+		error
+	if argc is equal to 2 (to handle single command-line arg that has multiple numbers separated by spaces)
+		split the string by space and store 
+		loop through resulted list
+			parse an element into integer
+			for that int
+				creat a new node (next will be NULL)
+				append that node to the end of the stack/list (for 1st times, that can be null, in that case, that will be current node)
+		after loop, clean that list
+		free memory allocated for array of pointer itself
+		return the stack/list	
+	if argc is more than 2
+		loop through the list
+			parse an element into integer
+			for that int
+				create a new node (next will be NUll)
+				append that node to the end of the stack/list
+	return the stack/list
+after that, the stack should be checked if empty or duplicated
+	to check duplicated, loop the stack/list until the last number
+		assign next number to comparison num
+		then loop until that comparison list's last number
+			check if current num of stack is equal to comparison num 
+				if so return 1
+			move the comparison num to next comparison num
+		move the current stack num to next current stack num
+	return 0 : successful
+	if duplicated, free the stack/list
+	show error
+then, the stack should be check if sorted 
+
+if not, sort the stack
+	first check the numer of node (size) in the list/stack if it is 2 
+		then swap the top two elements of the stack
+
+xxx now xxx
+	if the number of node (size) in the list/stack is more then 2
+		b_stack will be sorted version of stack/list_a
+			to sort, first put top two elements of a to b 
+			then, push all until the final three elements from stack_a to stack_b
+				for that, loop until the stack_a has only 3 elements left or sorted
+					calculate the minimum number of rotation moves required to take elements from stack_a and place it correctly in stack_b
+						therefore, it need to loop every elements of stack_a to calculate cost of four different move strategies:
+							rarb 
+								first find the index where the num should be inserted in stack B (return 0 if already sorted)
+									if push num is greater than top node and smaller than the last node, it is the place to put
+									else if push num is greate than the max or smaller than the smallest
+										find the place (before the max num)
+									else (general case)
+										assign next node to tmp (so tmp is current node)
+										while previous node is smaller than the push num or current node is larger than the push num
+											still finding the index
+									return the number of ratation needed
+								check if the index number of that num in the stack is greater than the rotation needed
+									if so, update the current rotation cost to that index numer. 
+							rrarrb
+								first find the index where the num should be inserted in stack B (return 0 if already sorted)
+									if push num is greater than the top node and smaller than the last node, it is the place to put
+									else if push num is greate than the max or smaller than the smallest
+										find the place (before the max num)
+									else (general case)
+										assign next node to tmp (so tmp is current node)
+										while previous node is smaller than the push num or current node is larger than the push num
+											still finding the index
+									return the number of ratation needed
+									that value is caught (if non-zero, condition true)
+										rrb move = total size of stack b - insertion index (rb moves)
+								then calculate the number of rra move required to put element c in the top position of stack_a
+									if the rra cost is greater than current cost (cost b)
+									ensure the element c is not top of the stack_a
+								if cost is new maximum, current i is updated to this higher value (true max cost)
+							rarrb
+								first find the index where the num should be inserted in stack B (return 0 if already sorted)
+									if push num is greater than the top node and smaller than the last node, it is the place to put
+									else if push num is greate than the max or smaller than the smallest
+										find the place (before the max num)
+									else (general case)
+										assign next node to tmp (so tmp is current node)
+										while previous node is smaller than the push num or current node is larger than the push num
+											still finding the index
+									return the number of ratation needed (insertion index)
+								then to get the number of rotation needed to bring the target index to the top, 
+									total size of stack_b - insertion index
+								return the result 
+							rrarb 
+								first find number of rotation needed to put target num to the top of stack_a
+									if the index of target num in stack_a is non-zero (condition true)
+										size of stack_a - index of target num in stack_a
+								then find the index where the num should be inserted in stack B (return 0 if already sorted)
+									if push num is greater than the top node and smaller than the last node, it is the place to put
+									else if push num is greate than the max or smaller than the smallest
+										find the place (before the max num)
+									else (general case)
+										assign next node to tmp (so tmp is current node)
+										while previous node is smaller than the push num or current node is larger than the push num
+											still finding the index
+									return the number of ratation needed (insertion index)
+								total rotation is number of rotation need in stack_b + number of rotation needed to put num to the top of stack_a
+							move to the next node 
+						return the minimum number of rotation among four different strategies 
+					loop until the right move is executed
+						if the right move is rarb, apply rarb move
+							loop until top num of stack_a equal to target num and target num is at the correct index in stack_b 
+								do rotate stack_a and rotate stack_b
+									rotate all element of stack_a up by 1 (first element become last element)
+									rotate all element of stack_b up by 1 (first element become last element)
+							loop until top num of stack_a equal to target num 
+								rotate all element of stack_a up by 1 (first element become last element)
+							loop until target num is correctly put to the stack_b
+								rotate all element of stack_b up by 1 (fist element become last element)
+							finally push the first element of stack_a to the top of stack_b
+						else if the right move is rrarrb, apply rrarrb
+							loop until top num of stack_a equal to target num and target num is at the correct index in stack_b
+								do reverse rotate stack_a and reverse rotate stack_b at the same times
+									rotate all element of stack_a down by 1 (last element become first element)
+									rotate all element of stack_b down by 1 (last element become first element)
+							loop until top num of stack_a equal to target num 
+								rotate all element of stack_a down by 1 (last element become first element)
+							loop until target num is correctly put to the stack_b
+								rotate all element of stack_b down by 1 (last element become first element)
+							finally push the first element of stack_a to the top of stack_b
+						else if the right move is rarrb, apply rarrb 
+							loop until top num of the stack_a equal to target num 
+			after stack_a only have three element left, check those 3 num are sorted or not 
+				if not sorted, sort those 3 num of stack_a
+					if first num is min, 
+						rotate all element of stack_a down by 1 (last element become first element)
+						swap first 2 element at the top of stack_a
+					else if first num is max
+						rotate all element of stack_a up by 1 (first element become last element)
+						then check if current stack_a is sorted
+							if not, swap the first 2 element at the top of stack_a
+					else (general case)
+						if the max num index of stack_a is 1
+							rotate all element of stack_a down by 1 (last element become first element)
+						else
+							swap first 2 elements at the top of stack_a
+			return sorted version of stack_b			
+		then sort the stack_a
+			loop through all the elements of stack_b
+				first find the minimum number of ratation move to sort stack_a
+					rarb
+						get the number of rotation needed to put target num correctly in the stack_a
+						check if that index (num of rotation) of target num in stack_a is less than in stack_b
+							if so, take that index of target in stack_b
+						return that value
+					rrarrb
+						if index of target num in the stack_a is non-zero (not in correct position)
+							total rotation = size of stack_a - index of target num in stack_a
+						if current cost is less then (size of stack_b - index of target num in stack_b) and check target num index in stack_b is non zero
+							total rotation = size of stack_b - index if target num in stack_b
+						return the rotation. 
+					rarrb
+						check if the target num index in stack_b is non zero (not correctly sorted)
+							total rotation = size of stack_b - index of target in stack_b
+						then total rotation = index of target in stack_a (rotation needed to put it correctly) + current rotation 
+						return that rotation
+					rrarb
+						if number of rotation needed to put target in stack_a correctly is not non zero
+							total rotation = size of stack_a - current rotation
+						final rotation = current rotation + index of target in stack_b
+						return that rotation
+					move current node to next node
+					return the minimum number of rotation 
+				loop until that minimum rotation is greater than equal zero
+					if case is rarb,
+						loop until top node of stack_b equal to target num and index of target in stack_a c is non zero
+							rotate all element of stack_a up by 1 (first element become last)
+							rotate all element of stack_b up by 1 (first element become last)
+						loop until top node of stack_b equal to target num 
+							rotate all element of stack_b up by 1 (first element become last)
+						loop until index of target in stack_a is  non zero
+							rotate all element of stack_a up by 1 (first element become last)
+						push top node of stack_b to the top of stack_a
+					if case is rarrb,
+						loop until the index of target in stack_a is non zero
+							rotate all element of stack_a up by 1 (first element become last)
+						loop until the top node of the stack_b equal to target num
+							rotate all element of stack_b down by 1 (last element become last)
+						push top node of stack_b to the top of stack_a
+					if case if rrarrb
+						loop until top node of stack_b equal to target num and index of target in stack_a is non zero
+							rotate all element of stack_a down by 1 (last element become first)
+							rotate all element of stack_b down by 1 (last element become first)
+						loop util top node of stack_b equal to target num 
+							rotate all element of stack_b down by 1 (last element become first)
+						loop until index of target in stack_a is non zero
+							rotate all element of stack_a down by 1 (last element become first)
+						push top node of stack_b to top of stack_a
+					if case if rrarb
+						loop until index of target num in stack_a is non zero
+							rotate all element of stack_a down by 1 (last element become first)
+						loop until top node of stack_b equal to target num
+							rotate all element of stack_b up by 1 (first element become last)
+						push top node of stack_b to top of stack_a
+					move current node to next node
+			return the sorterd verion of stack_a
+			get the index of min num of stack_a
+			if that is lower than size of stack_a - current size
+				loop until the top node of stack_a equal to min num of stack_a
+					rotate all elements of stack up by 1 (first element become last)
+			else condition
+				loop until the top node of stack_a equal to min num of stack_a
+					rotate all elements of stack down by 1 (last element become first)
+free the process
+return zero (successful)
+
+			
+
+
+			
