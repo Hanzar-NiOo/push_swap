@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 22:27:53 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 12:03:34 by hnioo            ###   ########.fr       */
+/*   Updated: 2025/12/02 12:49:53 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ t_stack	**ft_get_stack(long s_idx, char **results)
 	long		idx;
 
 	a = malloc(sizeof(t_stack *));
+	if (!a)
+		return NULL;
+	*a = NULL; 
 	idx = 0;
 	while (results[s_idx])
 	{

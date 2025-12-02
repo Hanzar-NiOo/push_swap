@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 20:52:09 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 11:51:56 by hnioo            ###   ########.fr       */
+/*   Updated: 2025/12/02 13:17:10 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int	ft_is_duplicated(t_stack **a)
 
 int	ft_is_sorted(t_stack **a)
 {
-	while (*a && (*a)->next)
+	t_stack	*tmp;
+
+	tmp = *a;
+	while (tmp && tmp->next)
 	{
-		if ((*a)->num > (*a)->next->num)
+		if (tmp->num > tmp->next->num)
 			return (0);
-		*a = (*a)->next;
+		tmp = tmp->next;
 	}
 	return (1);
 }

@@ -20,7 +20,7 @@ int		ft_is_duplicated(t_stack **a);
 int		ft_is_sorted(t_stack **a);
 long	ft_stack_size(t_stack **a);
 void	ft_sa(t_stack **a);
-// t_stack	*ft_sb(t_stack **b);
-// t_stack	*ft_pb(t_stack **b, t_stack **a);
+void	ft_sb(t_stack **b);
+void	ft_pb(t_stack **b, t_stack **a);
 
 #endif

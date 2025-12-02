@@ -6,13 +6,13 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 10:24:14 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 11:57:24 by hnioo            ###   ########.fr       */
+/*   Updated: 2025/12/02 12:38:12 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_sb(t_stack **b)
+void	ft_sb(t_stack **b)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -27,31 +27,20 @@ t_stack	*ft_sb(t_stack **b)
 		first->prev = second;
 		second->prev = NULL;
 		second->next = first;
+		*b = second;
 	}
-	printf ("sb\n");
-	return (second);
+	printf ("sa\n");
 }
 
-// t_stack	*ft_pb(t_stack **a, t_stack **b)
-// {
-// 	// t_stack	*a_head;
-// 	t_stack	*b_head;
+void	ft_pb(t_stack **b, t_stack **a)
+{
+	t_stack	*tmp;
 
-// 	// append_node(&b, a);
-// 	// b_head = b;
-// 	// b = a;
-// 	// b->next = b_head;
-// 	// b->prev = NULL;
-// 	// b_head->prev = b;
-// 	// a_head = a->next;
-// 	// a = a_head;
-// 	if (!b)
-// 	{
-// 		b_head = a;
-// 		b = b_head;
-// 		b->prev = NULL;
-// 		b->next = NULL;
-// 	}
-// 	// a->prev = NULL;
-// 	return (b);
-// }
+	if (!*b)
+		return ;
+	tmp = *b;
+	*b = *a;
+	*a = (*a)->next;
+	(*b)->next = tmp;
+	printf ("pb\n");
+}
