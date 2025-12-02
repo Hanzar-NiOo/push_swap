@@ -6,19 +6,19 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 00:06:17 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 10:26:33 by hnioo            ###   ########.fr       */
+/*   Updated: 2025/12/02 12:06:18 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*sa(t_stack *a)
+void	ft_sa(t_stack **a)
 {
 	t_stack	*first;
 	t_stack	*second;
 
-	first = a;
-	second = a->next;
+	first = *a;
+	second = (*a)->next;
 	if (first && second)
 	{
 		first->next = second->next;
@@ -27,12 +27,12 @@ t_stack	*sa(t_stack *a)
 		first->prev = second;
 		second->prev = NULL;
 		second->next = first;
+		*a = second;
 	}
 	printf ("sa\n");
-	return (second);
 }
 
-// t_stack	*pa(t_stack *b, t_stack *a)
+// t_stack	*ft_pa(t_stack **b, t_stack **a)
 // {
 // 	t_stack	*head;
 

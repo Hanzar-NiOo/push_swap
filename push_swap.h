@@ -13,14 +13,14 @@ typedef struct s_stack
 # include <stdio.h>
 
 void	ft_error(char *str);
-t_stack	*new_node(long idx, long num);
-void 	append_node(t_stack **head, t_stack *node);
+t_stack	*ft_new_node(long idx, long num);
+void 	ft_append_node(t_stack **head, t_stack *node);
 t_stack	**ft_get_stack(long s_idx, char **results);
-int		is_duplicated(t_stack *a);
-int		is_sorted(t_stack *a);
+int		ft_is_duplicated(t_stack **a);
+int		ft_is_sorted(t_stack **a);
 long	ft_stack_size(t_stack **a);
-t_stack	*sa(t_stack *a);
-t_stack	*sb(t_stack *b);
-t_stack	*pb(t_stack *b, t_stack *a);
+void	ft_sa(t_stack **a);
+// t_stack	*ft_sb(t_stack **b);
+// t_stack	*ft_pb(t_stack **b, t_stack **a);
 
 #endif
