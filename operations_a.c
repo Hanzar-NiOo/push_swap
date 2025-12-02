@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 00:06:17 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 13:33:46 by hnioo            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:05:27 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,17 @@ void	ft_pa(t_stack **a, t_stack **b)
 	*b = (*b)->next;
 	(*a)->next = tmp;
 	printf ("pa\n");
+}
+
+void	ft_ra(t_stack **a)
+{
+	t_stack	*tmp;
+
+	tmp = *a;
+	// tmp->next = NULL;
+	*a = (*a)->next;
+	while ((*a)->next)
+		*a = (*a)->next;
+	// tmp->prev = *a;
+	(*a)->next = tmp;
 }
