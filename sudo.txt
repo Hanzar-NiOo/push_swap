@@ -42,7 +42,6 @@ if not, sort the stack
 	first check the numer of node (size) in the list/stack if it is 2 
 		then swap the top two elements of the stack
 
-xxx now xxx
 	if the number of node (size) in the list/stack is more then 2
 		b_stack will be sorted version of stack/list_a
 			to sort, first put top two elements of a to b 
@@ -50,7 +49,8 @@ xxx now xxx
 				for that, loop until the stack_a has only 3 elements left or sorted
 					calculate the minimum number of rotation moves required to take elements from stack_a and place it correctly in stack_b
 						therefore, it need to loop every elements of stack_a to calculate cost of four different move strategies:
-							rarb 
+							rarb
+xxx now xxx
 								first find the index where the num should be inserted in stack B (return 0 if already sorted)
 									if push num is greater than top node and smaller than the last node, it is the place to put
 									else if push num is greate than the max or smaller than the smallest

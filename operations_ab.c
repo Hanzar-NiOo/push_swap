@@ -27,6 +27,7 @@ void    ft_rr(t_stack **a, t_stack **b)
 		return ;
     ft_ra(a);
     ft_rb(b);
+    printf("rr\n");
 }
 
 void    ft_rrr(t_stack **a, t_stack **b)
@@ -35,4 +36,5 @@ void    ft_rrr(t_stack **a, t_stack **b)
 		return ;
     ft_rra(a);
     ft_rrb(b);
+    printf ("rrr\n");
 }

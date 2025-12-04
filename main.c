@@ -52,32 +52,7 @@ int	main(int argc, char **argv)
 		ft_sa(a);
 	else if (ft_stack_size(a) > 2)
 	{
-		printf ("size = %li\n", ft_stack_size(a));
-		// b = malloc(sizeof(t_stack *));
-		// *b = NULL;
-		// ft_pb(a, b);
-		// ft_pb(a, b);
-		// while (*b)
-		// {
-		// 	printf ("idx %li = ", (*b)->idx);
-		// 	printf ("%li\n", (*b)->num);
-		// 	(*b) = (*b)->next;
-		// }
-		// ft_pa(a, b);
-		// ft_pa(a, b);
-		ft_rrb(a);
-		while (*a)
-		{
-			printf ("a_idx %li = ", (*a)->idx);
-			printf ("%li\n", (*a)->num);
-			(*a) = (*a)->next;
-		}
-	// 	// while (*a)
-	// 	// {
-	// 	// 	printf ("idx %li = ", (*a)->idx);
-	// 	// 	printf ("%li\n", (*a)->num);
-	// 	// 	(*a) = (*a)->next;
-	// 	// }
+        
 	}
 	return (0);
 }

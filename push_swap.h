@@ -30,5 +30,6 @@ void    ft_rr(t_stack **a, t_stack **b);
 void    ft_rra(t_stack **a);
 void    ft_rrb(t_stack **b);
 void    ft_rrr(t_stack **a, t_stack **b);
+void    sort_num(t_stack **a, t_stack **b);
 
 #endif
