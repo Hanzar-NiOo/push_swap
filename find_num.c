@@ -65,7 +65,7 @@ long    ft_find_pos(t_stack **stack, long cur)
     return (result);
 }
 
-long    ft_find_mid(t_stack **stack)
+long    ft_mid_num(t_stack **stack)
 {
     t_stack *tmp;
     long    idx;
