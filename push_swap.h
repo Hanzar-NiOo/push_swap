@@ -34,5 +34,6 @@ void    sort_num(t_stack **a, t_stack **b);
 long    ft_min_num(t_stack **stack);
 long    ft_max_num(t_stack **stack);
 long    ft_find_pos(t_stack **stack, long cur);
+long    ft_find_mid(t_stack **stack);
 
 #endif
