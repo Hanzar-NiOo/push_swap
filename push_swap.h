@@ -35,5 +35,6 @@ long    ft_min_num(t_stack **stack);
 long    ft_max_num(t_stack **stack);
 long    ft_find_pos(t_stack **stack, long cur);
 long    ft_mid_num(t_stack **stack);
+long    ft_best_num(t_stack **a);
 
 #endif

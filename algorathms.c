@@ -12,10 +12,25 @@
 
 #include "push_swap.h"
 
-// long    algorathm_count(t_stack **a, t_stack **b)
-// {
+long    ft_best_num(t_stack **a)
+{
+    t_stack *tmp;
+    // long    count;
+    // long    pos;
+    // long    cur;
 
-// }
+    tmp = *a;
+    // pos = ft_find_pos(b, tmp->num);
+    // if (tmp->num != (*a)->num && pos != (*b)->num)
+    //     ft_rr(a, b);
+    while (tmp)
+    {
+        printf ("%li\n", tmp->num);
+        printf ("%li\n", (*a)->num);
+        tmp = tmp->next;
+    }
+    return (tmp->num);
+}
 
 void    sort_num(t_stack **a, t_stack **b)
 {

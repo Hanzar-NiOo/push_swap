@@ -52,10 +52,11 @@ int	main(int argc, char **argv)
 		ft_sa(a);
 	else if (ft_stack_size(a) > 2)
 	{
-        printf("%li\n", ft_max_num(a));
-        printf("%li\n", ft_min_num(a));
-        printf("%li\n", ft_find_pos(a, 8));
-        printf("%li\n", ft_mid_num(a));
+        // printf("%li\n", ft_max_num(a));
+        // printf("%li\n", ft_min_num(a));
+        // printf("%li\n", ft_find_pos(a, 18));
+        // printf("%li\n", ft_mid_num(a));
+        ft_best_num(a);
 	}
 	return (0);
 }

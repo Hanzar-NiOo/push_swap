@@ -48,7 +48,6 @@ long    ft_find_pos(t_stack **stack, long cur)
 {
     t_stack *tmp;
     long    max_num;
-    long    result;
 
     max_num = ft_max_num(stack);
     tmp = *stack;
@@ -56,13 +55,17 @@ long    ft_find_pos(t_stack **stack, long cur)
     {
         if (tmp->num == max_num)
         {
-            while (tmp->num > cur)
+            while (tmp)
+            {
+                if (tmp->num < cur)
+                    return (tmp->num);
                 tmp = tmp->next;
-            result = tmp->num;
+            }
         }
-        tmp = tmp->next;
+        if (tmp)
+            tmp = tmp->next;
     }
-    return (result);
+    return (max_num);
 }
 
 long    ft_mid_num(t_stack **stack)
