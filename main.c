@@ -48,17 +48,28 @@ int	main(int argc, char **argv)
 	}
 	if (ft_is_sorted(a))
 		printf("Stack is already sorted!!!");
-	if (ft_stack_size(a) == 2)
+	else if (ft_stack_size(a) == 2)
 		ft_sa(a);
-	else if (ft_stack_size(a) > 2)
-	{
-        // printf("%li\n", ft_max_num(a));
-        // printf("%li\n", ft_min_num(a));
-        // printf("%li\n", ft_find_pos(a, 18));
-        // printf("%li\n", ft_mid_num(a));
-        // ft_best_num(a, b);
-        sort_num(a, b);
-        // ft_best_num(a, b);
-	}
+	// else if (ft_stack_size(a) > 2)
+	// {
+    //     // printf("%li\n", ft_max_num(a));
+    //     // printf("%li\n", ft_min_num(a));
+    //     // printf("%li\n", ft_find_pos(a, 18));
+    //     // printf("%li\n", ft_mid_num(a));
+    //     while (*a)
+    //     {
+    //         printf ("%li\n", (*a)->num);
+    //         *a = (*a)->next;
+    //     }
+    //     ft_sa(a);
+    //     ft_pb(a, b);
+    //     while (*b)
+    //     {
+    //         printf ("%li\n", (*b)->num);
+    //         *b = (*b)->next;
+    //     }
+	// }
+    ft_rra(a);
+    ft_pb(a, b);
 	return (0);
 }

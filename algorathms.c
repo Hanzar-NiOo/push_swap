@@ -60,7 +60,7 @@ long    ft_best_num(t_stack **a, t_stack **b)
     return (best_num);
 }
 
-void    sort_num(t_stack **a, t_stack **b)
+void    ft_sort_num(t_stack **a, t_stack **b)
 {
     ft_pb(a, b);
     ft_pb(a, b);
