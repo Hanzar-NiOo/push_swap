@@ -12,24 +12,52 @@
 
 #include "push_swap.h"
 
-long    ft_best_num(t_stack **a)
+long    ft_get_count(t_stack **a, t_stack **b, long cur)
+{
+    long    pos;
+    long    count;
+    t_stack *tmp_a;
+    t_stack *tmp_b;
+
+    tmp_a = *a;
+    tmp_b = *b;
+    pos = ft_find_pos(b, tmp_b->num);
+    count = 0;
+    while (cur != (*a)->num && pos != (*b)->num)
+    {
+        if (cur != (*a)->num && pos != (*b)->num)
+        {
+            tmp_a = tmp_a->next;
+            tmp_b = tmp_b->next;
+        }
+        else if (cur != (*a)->num && pos == (*b)->num)
+            tmp_a = tmp_a->next;
+        else if (cur == (*a)->num && pos != (*b)->num)
+            tmp_b = tmp_b->next;
+        count++;
+    }
+    count++;
+    return (count);
+}
+
+long    ft_best_num(t_stack **a, t_stack **b)
 {
     t_stack *tmp;
-    // long    count;
-    // long    pos;
-    // long    cur;
+    long    min_count;
+    long    best_num;
 
     tmp = *a;
-    // pos = ft_find_pos(b, tmp->num);
-    // if (tmp->num != (*a)->num && pos != (*b)->num)
-    //     ft_rr(a, b);
-    while (tmp)
+    min_count = ft_get_count(a, b, tmp->num);
+    while(tmp)
     {
-        printf ("%li\n", tmp->num);
-        printf ("%li\n", (*a)->num);
+        if (min_count > ft_get_count(a, b, tmp->num))
+        {
+            min_count = ft_get_count(a, b, tmp->num);
+            best_num = tmp->num;
+        }
         tmp = tmp->next;
     }
-    return (tmp->num);
+    return (best_num);
 }
 
 void    sort_num(t_stack **a, t_stack **b)

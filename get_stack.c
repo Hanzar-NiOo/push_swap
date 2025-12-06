@@ -22,7 +22,7 @@ t_stack	*ft_new_node(long idx, long num)
 	node->idx = idx;
 	node->num = num;
 	node->next = NULL;
-	node->prev = NULL;
+	// node->prev = NULL;
 	return (node);
 }
 
@@ -39,7 +39,7 @@ void ft_append_node(t_stack **head, t_stack *node)
     while (tmp->next)
         tmp = tmp->next;
     tmp->next = node;
-    node->prev = tmp;
+    // node->prev = tmp;
 }
 
 t_stack	**ft_get_stack(long s_idx, char **results)

@@ -24,10 +24,10 @@ int	main(int argc, char **argv)
 {
 	char		**results;
 	t_stack		**a;
-	// t_stack		**b;
+	t_stack		**b;
 
 	a = NULL;
-	// b = NULL;
+	b = NULL;
 	if (argc < 2)
 		ft_error("argv Error");
 	else if (argc == 2)
@@ -56,7 +56,9 @@ int	main(int argc, char **argv)
         // printf("%li\n", ft_min_num(a));
         // printf("%li\n", ft_find_pos(a, 18));
         // printf("%li\n", ft_mid_num(a));
-        ft_best_num(a);
+        // ft_best_num(a, b);
+        sort_num(a, b);
+        // ft_best_num(a, b);
 	}
 	return (0);
 }

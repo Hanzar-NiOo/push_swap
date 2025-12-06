@@ -6,7 +6,7 @@ typedef struct s_stack
 	long			num;
 	long			idx;
 	struct s_stack	*next;
-	struct s_stack	*prev;
+	// struct s_stack	*prev;
 }	t_stack;
 
 # include "libft/libft.h"
@@ -35,6 +35,7 @@ long    ft_min_num(t_stack **stack);
 long    ft_max_num(t_stack **stack);
 long    ft_find_pos(t_stack **stack, long cur);
 long    ft_mid_num(t_stack **stack);
-long    ft_best_num(t_stack **a);
+long    ft_get_count(t_stack **a, t_stack **b, long cur);
+long    ft_best_num(t_stack **a, t_stack **b);
 
 #endif

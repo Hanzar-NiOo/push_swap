@@ -22,10 +22,10 @@ void	ft_sb(t_stack **b)
 	if (first && second)
 	{
 		first->next = second->next;
-		if (second->next)
-			second->next->prev = first;
-		first->prev = second;
-		second->prev = NULL;
+		// if (second->next)
+		// 	second->next->prev = first;
+		// first->prev = second;
+		// second->prev = NULL;
 		second->next = first;
 		*b = second;
 	}
