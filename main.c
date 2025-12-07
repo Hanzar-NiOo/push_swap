@@ -20,6 +20,18 @@ void free_split(char **arr)
     free(arr);
 }
 
+static  void    print_stack(t_stack **stack)
+{
+    t_stack *tmp;
+
+    tmp = *stack;
+    while (tmp)
+    {
+        printf("%li\n", tmp->num);
+        tmp = tmp->next;
+    }
+}
+
 int	main(int argc, char **argv)
 {
 	char		**results;
@@ -40,36 +52,61 @@ int	main(int argc, char **argv)
 		a = ft_get_stack(1, argv);
 	if (!a)
 		ft_error("Stack is empty");
-	if (ft_is_duplicated(a))
+	else if (ft_is_duplicated(a))
 	{
 		ft_error("Num is dup!");
 		free (a);
 		a = NULL;
 	}
-	if (ft_is_sorted(a))
+	else if (ft_is_sorted(a))
 		printf("Stack is already sorted!!!");
 	else if (ft_stack_size(a) == 2)
 		ft_sa(a);
-	// else if (ft_stack_size(a) > 2)
-	// {
-    //     // printf("%li\n", ft_max_num(a));
-    //     // printf("%li\n", ft_min_num(a));
-    //     // printf("%li\n", ft_find_pos(a, 18));
-    //     // printf("%li\n", ft_mid_num(a));
-    //     while (*a)
-    //     {
-    //         printf ("%li\n", (*a)->num);
-    //         *a = (*a)->next;
-    //     }
-    //     ft_sa(a);
-    //     ft_pb(a, b);
-    //     while (*b)
-    //     {
-    //         printf ("%li\n", (*b)->num);
-    //         *b = (*b)->next;
-    //     }
-	// }
-    ft_rra(a);
-    ft_pb(a, b);
+	else if (ft_stack_size(a) > 2)
+	{
+        b = malloc(sizeof(t_stack *));
+        ft_pb (a, b);
+        ft_pb (a, b);
+        printf("%li\n", ft_best_num(a, b));
+        // ft_sort_num(a, b);
+        // print_stack(a);
+        // printf ("STack B\n");
+        print_stack(b);
+	}
 	return (0);
 }
+
+// int main(int argc, char **argv)
+// {
+//     char		**results;
+// 	t_stack		**a;
+// 	t_stack		**b;
+
+// 	a = NULL;
+// 	b = NULL;
+// 	if (argc < 2)
+// 		ft_error("argv Error");
+// 	else if (argc == 3)
+// 	{
+// 		results = ft_split(argv[1], ' ');
+// 		a = ft_get_stack(0, results);
+// 		free_split(results);
+//         results = ft_split(argv[2], ' ');
+// 		b = ft_get_stack(0, results);
+// 		free_split(results);
+// 	}
+//     // while (*a)
+//     // {
+//     //     (*a) = (*a)->next;
+//     // }
+//     long    best_num = ft_best_num(a, b);
+//     printf ("%li\n", best_num);
+//     // print_stack(a);
+//     // printf ("Stack B\n");
+//     // print_stack(b);
+//     // ft_pb(a, b);
+//     // ft_pb(a, b);
+//     // printf ("New Stack B\n");
+//     // print_stack(b);
+//     return (0);
+// }

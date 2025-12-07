@@ -29,20 +29,20 @@ void	ft_sb(t_stack **b)
 		second->next = first;
 		*b = second;
 	}
-	printf ("sa\n");
+	printf ("sb\n");
 }
 
 void	ft_pb(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
+	t_stack *tmp;
 
 	if (!a || !*a)
 		return ;
-	tmp = *b;
+	tmp = (*a)->next;
+	(*a)->next = *b;
 	*b = *a;
-	*a = (*a)->next;
-	(*b)->next = tmp;
-	printf ("pb\n");
+	*a = tmp;
+	printf("pb\n");
 }
 
 void    ft_rb(t_stack **b)

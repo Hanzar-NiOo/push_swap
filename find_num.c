@@ -48,24 +48,25 @@ long    ft_find_pos(t_stack **stack, long cur)
 {
     t_stack *tmp;
     long    max_num;
+    long    min_num;
+    long    result;
 
     max_num = ft_max_num(stack);
-    tmp = *stack;
-    while (tmp)
+    min_num = ft_min_num(stack);
+    if (cur > max_num || cur < min_num)
+        result = max_num;
+    else
     {
-        if (tmp->num == max_num)
+        tmp = *stack;
+        result = tmp->num;
+        while (tmp)
         {
-            while (tmp)
-            {
-                if (tmp->num < cur)
-                    return (tmp->num);
-                tmp = tmp->next;
-            }
-        }
-        if (tmp)
+            if (cur < tmp->num && tmp->next && cur > tmp->next->num)
+                result = tmp->next->num;
             tmp = tmp->next;
+        }
     }
-    return (max_num);
+    return (result);
 }
 
 long    ft_mid_num(t_stack **stack)
