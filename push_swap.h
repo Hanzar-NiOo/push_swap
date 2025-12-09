@@ -12,6 +12,7 @@ typedef struct s_stack
 # include "libft/libft.h"
 # include <stdio.h>
 
+void    free_split(char **arr);
 void	ft_error(char *str);
 t_stack	*ft_new_node(long idx, long num);
 void 	ft_append_node(t_stack **head, t_stack *node);
@@ -37,5 +38,9 @@ long    ft_mid_num(t_stack **stack);
 long    ft_get_count(t_stack **a, t_stack **b, long cur);
 long    ft_best_num(t_stack **a, t_stack **b);
 void    ft_sort_num(t_stack **a, t_stack **b);
+
+void    print_stack(t_stack **stack);
+void    print_stack_A(t_stack **stack);
+void    print_stack_B(t_stack **stack);
 
 #endif
