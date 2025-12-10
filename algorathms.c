@@ -82,7 +82,6 @@ void    ft_sort_num(t_stack **a, t_stack **b)
                 ft_ra(a);
             else if ((*a)->num == best_num && (*b)->num != pos)
                 ft_rb(b);
-            ft_pb(a, b);
         }
         print_stack_A(a);
         print_stack_B(b);

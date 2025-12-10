@@ -73,11 +73,11 @@ int main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		a = ft_get_stack(1, argv);
-    print_stack_A(a);
+    // print_stack_A(a);
     b = malloc(sizeof(t_stack *));
-    print_stack_B(b);
-    printf ("Stack_A Size = %li\n", ft_stack_size(a));
-    printf ("Stack_B Size = %li\n", ft_stack_size(b));
+    // print_stack_B(b);
+    // printf ("Stack_A Size = %li\n", ft_stack_size(a));
+    // printf ("Stack_B Size = %li\n", ft_stack_size(b));
 
     // Pos test
     long    best_num;
