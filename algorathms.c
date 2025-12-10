@@ -74,6 +74,16 @@ void    ft_sort_num(t_stack **a, t_stack **b)
     {
         pos = ft_find_pos(b, (*a)->num);
         best_num = ft_best_num(a, b);
+        while ((*a)->num != best_num || (*b)->num != pos)
+        {
+            if ((*a)->num != best_num && (*b)->num != pos)
+                ft_rr(a, b);
+            else if ((*a)->num != best_num && (*b)->num == pos)
+                ft_ra(a);
+            else if ((*a)->num == best_num && (*b)->num != pos)
+                ft_rb(b);
+            ft_pb(a, b);
+        }
         print_stack_A(a);
         print_stack_B(b);
         printf("best_num = %li, ",  best_num);
@@ -81,16 +91,6 @@ void    ft_sort_num(t_stack **a, t_stack **b)
         printf(", Count = %li\n", ft_get_count(a, b, ((*a)->num)));
         ft_pb(a, b);
         printf("\n");
-    //     while (best_num != (*a)->num || pos != (*b)->num)
-    //     {
-    //         if (best_num != (*a)->num && pos != (*b)->num)
-    //             ft_rr(a, b);
-    //         else if (best_num != (*a)->num && pos == (*b)->num)
-    //             ft_ra(a);
-    //         else if (best_num == (*a)->num && pos != (*b)->num)
-    //             ft_rb(b);
-    //     }
-        // printf ("Stack_B Size = %li\n", ft_stack_size(b));
         size--;
     }
     // if (ft_stack_size(a) == 3)

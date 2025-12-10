@@ -78,6 +78,31 @@ int main(int argc, char **argv)
     print_stack_B(b);
     printf ("Stack_A Size = %li\n", ft_stack_size(a));
     printf ("Stack_B Size = %li\n", ft_stack_size(b));
-    ft_sort_num(a, b);
+
+    // Pos test
+    long    best_num;
+    long    pos;
+    long    size;
+
+    ft_pb(a, b);
+    ft_pb(a, b);
+    size = ft_stack_size(a);
+    while (size > 3)
+    {
+        pos = ft_find_pos(b, (*a)->num);
+        best_num = ft_best_num(a, b);
+        print_stack_A(a);
+        print_stack_B(b);
+        printf("best_num = %li, ",  best_num);
+        printf("%li's pos = %li, ", best_num, pos);
+        printf(", Count = %li\n", ft_get_count(a, b, ((*a)->num)));
+        ft_pb(a, b);
+        printf("\n");
+        size--;
+    }
+    // xxx
+    // ft_sort_num(a, b);
+    print_stack_A(a);
+    print_stack_B(b);
     return (0);
 }

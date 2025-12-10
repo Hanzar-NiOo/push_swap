@@ -13,7 +13,7 @@ typedef struct s_stack
 # include <stdio.h>
 
 void    free_split(char **arr);
-void	ft_error(char *str);
+void	ft_error();
 t_stack	*ft_new_node(long idx, long num);
 void 	ft_append_node(t_stack **head, t_stack *node);
 t_stack	**ft_get_stack(long s_idx, char **results);

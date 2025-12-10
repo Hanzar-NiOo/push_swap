@@ -53,17 +53,30 @@ long    ft_find_pos(t_stack **stack, long cur)
     max_num = ft_max_num(stack);
     min_num = ft_min_num(stack);
     if (cur > max_num || cur < min_num)
-        return (min_num);
+        return (max_num);
     else
     {
         tmp = *stack;
-        if (cur < min_num || cur > max_num)
-            return (min_num);
-        while (tmp && tmp->next)
+        if (tmp->num > cur)
         {
-            if (cur > tmp->num && cur < tmp->next->num)
-                return (tmp->next->num);
-            tmp = tmp->next;
+            printf("HEADER -> %li\n", tmp->num);
+            while (tmp->num != max_num)
+                tmp = tmp->next;
+            while (tmp->next)
+            {
+                if (cur < tmp->num && cur > tmp->next->num)
+                    return (tmp->next->num);
+                tmp = tmp->next;
+            }
+        }
+        else if (tmp->num < cur)
+        {
+            while (tmp->next)
+            {
+                if (cur < tmp->num && cur > tmp->next->num)
+                    return (tmp->num);
+                tmp = tmp->next;
+            }
         }
     }
     return (tmp->num);

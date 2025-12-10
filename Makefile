@@ -1,7 +1,7 @@
 NAME = push_swap
 TEST = test
 
-TEST_FILES = tests.c utils.c get_stack.c check_stack.c operations_a.c operations_b.c operations_ab.c\
+TEST_FILES = tests.c error.c get_stack.c check_stack.c operations_a.c operations_b.c operations_ab.c\
 		algorathms.c find_num.c
 SRCS = main.c utils.c get_stack.c check_stack.c operations_a.c operations_b.c operations_ab.c\
 		algorathms.c find_num.c

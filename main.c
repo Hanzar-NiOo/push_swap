@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	if (argc < 2)
-		ft_error("argv Error\n");
+		ft_error();
 	else if (argc == 2)
 	{
 		results = ft_split(argv[1], ' ');
@@ -40,10 +40,10 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		a = ft_get_stack(1, argv);
 	if (!a)
-		ft_error("Stack is empty\n");
+		ft_error();
 	else if (ft_is_duplicated(a))
 	{
-		ft_error("Num is dup!\n");
+		ft_error();
 		free (a);
 	}
 	else if (ft_is_sorted(a))
