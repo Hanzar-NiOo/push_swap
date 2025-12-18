@@ -1,12 +1,14 @@
 NAME = push_swap
-TEST = test
+# TEST = test
 
-TEST_FILES = tests.c error.c get_stack.c check_stack.c operations_a.c operations_b.c operations_ab.c\
-		algorathms.c find_num.c
-SRCS = main.c utils.c get_stack.c check_stack.c operations_a.c operations_b.c operations_ab.c\
-		algorathms.c find_num.c
+# # TEST_FILES = tests.c error.c get_stack.c check_stack.c operations_a.c operations_b.c operations_ab.c\
+# # 		algorathms.c find_num.c
+# SRCS = main.c error.c get_stack.c check_stack.c operations_a.c operations_b.c operations_ab.c\
+# 		algorathms.c find_num.c
+# TEST_FILES = tests.c error.c get_stack.c
+SRCS = main.c error.c get_stack.c
 
-TEST_OBJS = $(TEST_FILES:.c=.o)
+# TEST_OBJS = $(TEST_FILES:.c=.o)
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = ./libft
@@ -21,8 +23,8 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
 # // TEST RULE //
-$(TEST): $(TEST_OBJS)
-	$(CC) $(CFLAGS) -o $(TEST) $(TEST_OBJS) $(LIBFT) -o test
+# $(TEST): $(TEST_OBJS)
+# 	$(CC) $(CFLAGS) -o $(TEST) $(TEST_OBJS) $(LIBFT) -o test
 
 clean:
 	rm -f $(OBJS)

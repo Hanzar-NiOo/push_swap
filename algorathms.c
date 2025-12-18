@@ -61,11 +61,22 @@ long    ft_best_num(t_stack **a, t_stack **b)
     return (best_num);
 }
 
+t_top   *ft_get_top(t_stack **a, t_stack **b)
+{
+    t_top   *top;
+
+    top = malloc(sizeof(t_top));
+    top->top_A = *a;
+    top->top_B = *b;
+    return (top);
+}
+
 void    ft_sort_num(t_stack **a, t_stack **b)
 {
     long    best_num;
     long    pos;
     long    size;
+    // t_top   *top;
 
     ft_pb(a, b);
     ft_pb(a, b);
@@ -74,21 +85,27 @@ void    ft_sort_num(t_stack **a, t_stack **b)
     {
         pos = ft_find_pos(b, (*a)->num);
         best_num = ft_best_num(a, b);
-        while ((*a)->num != best_num || (*b)->num != pos)
+        // top = ft_get_top(a, b);
+        // printf("Top_A = %li\n", top->top_A->num);
+        // printf("Top_B = %li\n", top->top_B->num);
+        while ((*a)->num != best_num)
         {
-            if ((*a)->num != best_num && (*b)->num != pos)
-                ft_rr(a, b);
-            else if ((*a)->num != best_num && (*b)->num == pos)
-                ft_ra(a);
-            else if ((*a)->num == best_num && (*b)->num != pos)
-                ft_rb(b);
+            // if ((*a)->num != best_num && (*b)->num != pos)
+            //     ft_rr(a, b);
+            // else if ((*a)->num != best_num)
+            //     ft_ra(a);
+            // if ((*b)->num != pos)
+            ft_rb(b);
         }
+        ft_sb(b);
+        ft_pb(a, b);
+        // *a = top->top_A;
+        // *b = top->top_B;
         print_stack_A(a);
         print_stack_B(b);
         printf("best_num = %li, ",  best_num);
         printf("%li's pos = %li, ", best_num, pos);
         printf(", Count = %li\n", ft_get_count(a, b, ((*a)->num)));
-        ft_pb(a, b);
         printf("\n");
         size--;
     }

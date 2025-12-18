@@ -22,7 +22,7 @@ t_stack	*ft_new_node(long idx, long num)
 	node->idx = idx;
 	node->num = num;
 	node->next = NULL;
-	// node->prev = NULL;
+	node->prev = NULL;
 	return (node);
 }
 
@@ -39,10 +39,10 @@ void ft_append_node(t_stack **head, t_stack *node)
     while (tmp->next)
         tmp = tmp->next;
     tmp->next = node;
-    // node->prev = tmp;
+    node->prev = tmp;
 }
 
-t_stack	**ft_get_stack(long s_idx, char **results)
+t_stack	**ft_get_stack(char **results)
 {
 	t_stack		**a;
 	t_stack		*node;
@@ -54,27 +54,27 @@ t_stack	**ft_get_stack(long s_idx, char **results)
 		return NULL;
 	*a = NULL; 
 	idx = 0;
-	while (results[s_idx])
+	while (results[idx])
 	{
-		num = ft_atoi(results[s_idx]);
-		node = ft_new_node(idx++, num);
+		num = ft_atoi(results[idx]);
+		node = ft_new_node(idx, num);
 		ft_append_node(a, node);
-		s_idx++;
+		idx++;
 	}
 	return (a);
 }
 
-long	ft_stack_size(t_stack **a)
-{
-	t_stack	*node;
-	long	idx;
+// long	ft_stack_size(t_stack **a)
+// {
+// 	t_stack	*node;
+// 	long	idx;
 
-	idx = 0;
-	node = *a;
-	while (node)
-	{
-		idx++;
-		node = node->next;
-	}
-	return (idx);
-}
+// 	idx = 0;
+// 	node = *a;
+// 	while (node)
+// 	{
+// 		idx++;
+// 		node = node->next;
+// 	}
+// 	return (idx);
+// }

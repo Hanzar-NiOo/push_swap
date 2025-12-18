@@ -14,72 +14,64 @@
 
 void	ft_sa(t_stack **a)
 {
-	t_stack	*first;
-	t_stack	*second;
+	t_stack	*tmp;
 
-	first = *a;
-	second = (*a)->next;
-	if (first && second)
-	{
-		first->next = second->next;
-		// if (second->next)
-		// 	second->next->prev = first;
-		// first->prev = second;
-		// second->prev = NULL;
-		second->next = first;
-		*a = second;
-	}
-	printf ("sa\n");
+	if (!*a || !((*a)->next))
+		return ;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = (*a)->next;
+	(*a)->next = tmp;
+    write(1, "sa\n", 3);
 }
 
 void	ft_pa(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (!b || !*b)
+	if (!*b)
 		return ;
 	tmp = *a;
 	*a = *b;
 	*b = (*b)->next;
 	(*a)->next = tmp;
-	printf ("pa\n");
+    write(1, "pa\n", 3);
 }
 
 void	ft_ra(t_stack **a)
 {
-    t_stack	*first;
-	t_stack	*last;
+	t_stack	*tmp;
 
-	if (!a || !*a || !(*a)->next)
+	if (!*a || !(*a)->next)
 		return ;
-	first = *a;
-	*a = (*a)->next;
-	last = *a;
-	while (last->next)
-		last = last->next;
-	first->next = NULL;
-	last->next = first;
-    printf ("ra\n");
+	tmp = *a;
+	*a = ft_lstlast(*a);
+	(*a)->next = tmp;
+	*a = tmp->next;
+	tmp->next = NULL;
+    write(1, "ra\n", 3);
 }
 
-void    ft_rra(t_stack **a)
+void	ft_rra(t_stack **a)
 {
-    t_stack *first;
-    t_stack *last;
-    t_stack *new_last;
+	t_stack	*tmp;
+	int		i;
 
-    if (!a || !*a || !(*a)->next)
-        return ;
-    first = *a;
-    last = *a;
-    while (last->next)
-    {
-        if (!last->next->next)
-            new_last = last;
-        last = last->next;
-    }
-    *a = last;
-    last->next = first;
-    new_last->next = NULL;
-    printf("rra\n");
+	if (!*a || !(*a)->next)
+		return ;
+	i = 0;
+	tmp = *a;
+	while ((*a)->next)
+	{
+		*a = (*a)->next;
+		i++;
+	}
+	(*a)->next = tmp;
+	while (i > 1)
+	{
+		tmp = tmp->next;
+		i--;
+	}
+	tmp->next = NULL;
+    write(1, "rra\n", 4);
 }

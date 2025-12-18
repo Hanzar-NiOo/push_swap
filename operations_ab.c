@@ -12,29 +12,85 @@
 
 #include "push_swap.h"
 
-void    ft_ss(t_stack **a, t_stack **b)
+void	ft_rr(t_stack **a, t_stack **b)
 {
+	t_stack	*tmp;
+
 	if (!*a || !((*a)->next) || !*b || !((*b)->next))
 		return ;
-    ft_sa(a);
-    ft_sb(b);
-    printf ("ss\n");
+	tmp = *a;
+	*a = ft_lstlast(*a);
+	(*a)->next = tmp;
+	*a = tmp->next;
+	tmp->next = NULL;
+	tmp = *b;
+	*b = ft_lstlast(*b);
+	(*b)->next = tmp;
+	*b = tmp->next;
+	tmp->next = NULL;
+    write(1, "rr\n", 3);
 }
 
-void    ft_rr(t_stack **a, t_stack **b)
+void	ft_rrr_sub(t_stack **b)
 {
-    if (!*a || !((*a)->next) || !*b || !((*b)->next))
-		return ;
-    ft_ra(a);
-    ft_rb(b);
-    printf("rr\n");
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = *b;
+	while ((*b)->next)
+	{
+		i++;
+		*b = (*b)->next;
+	}
+	(*b)->next = tmp;
+	while (i > 1)
+	{
+		tmp = tmp->next;
+		i--;
+	}
+	tmp->next = NULL;
+    write(1, "rrr\n", 4);
 }
 
-void    ft_rrr(t_stack **a, t_stack **b)
+void	ft_rrr(t_stack **a, t_stack **b)
 {
-    if (!*a || !((*a)->next) || !*b || !((*b)->next))
+	t_stack	*tmp;
+	int		i;
+
+	if (!*a || !((*a)->next) || !*b || !((*b)->next))
 		return ;
-    ft_rra(a);
-    ft_rrb(b);
-    printf ("rrr\n");
+	i = 0;
+	tmp = *a;
+	while ((*a)->next)
+	{
+		i++;
+		*a = (*a)->next;
+	}
+	(*a)->next = tmp;
+	while (i > 1)
+	{
+		tmp = tmp->next;
+		i--;
+	}
+	tmp->next = NULL;
+	ft_rrr_sub(b, j);
+}
+
+
+void	ft_ss(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+
+	if (!*a || !((*a)->next) || !*b || !((*b)->next))
+		return ;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = (*a)->next;
+	(*a)->next = tmp;
+	tmp = *b;
+	*b = (*b)->next;
+	tmp->next = (*b)->next;
+	(*b)->next = tmp;
+    write(1, "ss\n", 3);
 }
