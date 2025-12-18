@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+void	ft_ss(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+
+	if (!*a || !((*a)->next) || !*b || !((*b)->next))
+		return ;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = (*a)->next;
+	(*a)->next = tmp;
+	tmp = *b;
+	*b = (*b)->next;
+	tmp->next = (*b)->next;
+	(*b)->next = tmp;
+    write(1, "ss\n", 3);
+}
+
 void	ft_rr(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
@@ -19,19 +36,19 @@ void	ft_rr(t_stack **a, t_stack **b)
 	if (!*a || !((*a)->next) || !*b || !((*b)->next))
 		return ;
 	tmp = *a;
-	*a = ft_lstlast(*a);
+	*a = ft_lst_last(*a);
 	(*a)->next = tmp;
 	*a = tmp->next;
 	tmp->next = NULL;
 	tmp = *b;
-	*b = ft_lstlast(*b);
+	*b = ft_lst_last(*b);
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
     write(1, "rr\n", 3);
 }
 
-void	ft_rrr_sub(t_stack **b)
+static void ft_rrr_sub(t_stack **b)
 {
 	t_stack	*tmp;
 	int		i;
@@ -74,23 +91,5 @@ void	ft_rrr(t_stack **a, t_stack **b)
 		i--;
 	}
 	tmp->next = NULL;
-	ft_rrr_sub(b, j);
-}
-
-
-void	ft_ss(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp;
-
-	if (!*a || !((*a)->next) || !*b || !((*b)->next))
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = (*a)->next;
-	(*a)->next = tmp;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = (*b)->next;
-	(*b)->next = tmp;
-    write(1, "ss\n", 3);
+	ft_rrr_sub(b);
 }

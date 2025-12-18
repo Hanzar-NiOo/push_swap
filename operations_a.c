@@ -45,7 +45,7 @@ void	ft_ra(t_stack **a)
 	if (!*a || !(*a)->next)
 		return ;
 	tmp = *a;
-	*a = ft_lstlast(*a);
+	*a = ft_lst_last(*a);
 	(*a)->next = tmp;
 	*a = tmp->next;
 	tmp->next = NULL;

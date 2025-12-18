@@ -88,3 +88,58 @@ int main(int argc,char **argv)
     print_stack(a);
     return (0);
 }
+
+// Operations_check
+// int main(int argc,char **argv)
+// {
+//     char    **results;
+//     t_stack **a;
+//     t_stack **b;
+
+//     results = ft_results(argc, argv);
+//     if (!ft_check_results(results))
+//         ft_error();
+//     a = ft_get_stack(results);
+//     b = NULL;
+//     if (ft_is_duplicated(a) || ft_is_invalid_input(a))
+//         ft_error();
+//     print_stack(a);
+//     ft_sa(a);
+//     printf ("Swap A => ");
+//     print_stack(a);
+//     ft_ra(a);
+//     printf ("Rotate A => ");
+//     print_stack(a);
+//     ft_rra(a);
+//     printf ("Reverse Rotate A => ");
+//     print_stack(a);
+//     b = malloc(sizeof(t_stack));
+//     ft_pb(a, b);
+//     ft_pb(a, b);
+//     ft_pb(a, b);
+//     printf ("Push B => ");
+//     print_stack(a);
+//     print_stack(b);
+//     ft_sb(b);
+//     printf ("Swap B => ");
+//     print_stack(b);
+//     ft_ra(b);
+//     printf ("Rotate B => ");
+//     print_stack(b);
+//     ft_rra(b);
+//     printf ("Reverse Rotate B => ");
+//     print_stack(b);
+//     printf ("Swap both => ");
+//     ft_ss(a, b);
+//     print_stack(a);
+//     print_stack(b);
+//     printf ("Rotate both => ");
+//     ft_rr(a, b);
+//     print_stack(a);
+//     print_stack(b);
+//     printf ("Reserve rotate both => ");
+//     ft_rrr(a, b);
+//     print_stack(a);
+//     print_stack(b);
+//     return (0);
+// }

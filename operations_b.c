@@ -22,11 +22,10 @@ void	ft_sb(t_stack **b)
 	*b = (*b)->next;
 	tmp->next = (*b)->next;
 	(*b)->next = tmp;
-	if (j == 0)
-		write(1, "sb\n", 3);
+    write(1, "sb\n", 3);
 }
 
-void	ft_pb(t_stack **stack_a, t_stack **stack_b, int j)
+void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
 
@@ -36,26 +35,24 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b, int j)
 	*stack_b = *stack_a;
 	*stack_a = (*stack_a)->next;
 	(*stack_b)->next = tmp;
-	if (j == 0)
-		write(1, "pb\n", 3);
+    write(1, "pb\n", 3);
 }
 
-void	ft_rb(t_stack **b, int j)
+void	ft_rb(t_stack **b)
 {
 	t_stack	*tmp;
 
 	if (!*b || !(*b)->next)
 		return ;
 	tmp = *b;
-	*b = ft_lstlast(*b);
+	*b = ft_lst_last(*b);
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "rb\n", 3);
+    write(1, "rb\n", 3);
 }
 
-void	ft_rrb(t_stack **b, int j)
+void	ft_rrb(t_stack **b)
 {
 	t_stack	*tmp;
 	int		i;
@@ -76,6 +73,5 @@ void	ft_rrb(t_stack **b, int j)
 		i--;
 	}
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "rrb\n", 4);
+    write(1, "rrb\n", 4);
 }
