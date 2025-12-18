@@ -12,23 +12,6 @@
 
 #include "push_swap.h"
 
-static void    print_stack(t_stack **stack)
-{
-    t_stack *top;
-    t_stack *tmp;
-
-    top = *stack;
-    tmp = *stack;
-    printf("Stack -> [ ");
-    while (tmp)
-    {
-        printf("%li ", tmp->num);
-        tmp = tmp->next;
-    }
-    printf ("]\n");
-    *stack = top;
-}
-
 static char    **ft_results(int argc, char **argv)
 {
     char	**results;
@@ -51,50 +34,55 @@ static char    **ft_results(int argc, char **argv)
     return (results);
 }
 
+static int  ft_check_results(char **results)
+{
+    long    idx;
+    long    char_idx;
+
+    idx = 0;
+    while (results[idx])
+    {
+        char_idx = 0;
+        while (results[idx][char_idx])
+        {
+            if (char_idx == 0 && ((results[idx][char_idx] == '+') || (results[idx][char_idx] == '-')))
+                char_idx++;
+            else if ((results[idx][char_idx] >= 48) && (results[idx][char_idx] <= 57))
+                char_idx++;
+            else
+                return (0);
+        }
+        idx++;
+    }
+    return (1);
+}
+
+static void    print_stack(t_stack **stack)
+{
+    t_stack *top;
+    t_stack *tmp;
+
+    top = *stack;
+    tmp = *stack;
+    printf("Stack -> [ ");
+    while (tmp)
+    {
+        printf("%li ", tmp->num);
+        tmp = tmp->next;
+    }
+    printf ("]\n");
+    *stack = top;
+}
+
 int main(int argc,char **argv)
 {
     char    **results;
     t_stack **a;
 
     results = ft_results(argc, argv);
-    int idx = 0;
-    while (results[idx])
-        printf ("%s\n", results[idx++]);
+    if (!ft_check_results(results))
+        ft_error();
     a = ft_get_stack(results);
     print_stack(a);
     return (0);
 }
-
-// char    **results(int argc, char **argv)
-// {
-// 	char		**results;
-
-// 	if (argc < 2)
-// 		ft_error();
-// 	else if (argc == 2)
-// 	{
-// 		results = ft_split(argv[1], ' ');
-// 		free_split(results);
-//         return (results);
-// 	}
-// 	else
-//         results = (argv[1]);
-//     return (results);
-// 	if (!a)
-// 		ft_error();
-// 	else if (ft_is_duplicated(a))
-// 	{
-// 		ft_error();
-// 		free (a);
-// 	}
-// 	else if (ft_is_sorted(a))
-// 		printf("Stack is already sorted!!!\n");
-// 	else if (ft_stack_size(a) == 2)
-// 		ft_sa(a);
-// 	else if (ft_stack_size(a) > 2)
-// 	{
-//         b = malloc(sizeof(t_stack *));
-//         ft_sort_num(a, b);
-	// }
-	// return (0);
-// }
