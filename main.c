@@ -83,6 +83,8 @@ int main(int argc,char **argv)
     if (!ft_check_results(results))
         ft_error();
     a = ft_get_stack(results);
+    if (ft_is_duplicated(a) || ft_is_invalid_input(a))
+        ft_error();
     print_stack(a);
     return (0);
 }
