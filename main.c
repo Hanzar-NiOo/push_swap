@@ -57,22 +57,22 @@ static int  ft_check_results(char **results)
     return (1);
 }
 
-// static void    print_stack(t_stack **stack)
-// {
-//     t_stack *top;
-//     t_stack *tmp;
+static void    print_stack(t_stack **stack)
+{
+    t_stack *top;
+    t_stack *tmp;
 
-//     top = *stack;
-//     tmp = *stack;
-//     printf("Stack -> [ ");
-//     while (tmp)
-//     {
-//         printf("%li ", tmp->num);
-//         tmp = tmp->next;
-//     }
-//     printf ("]\n");
-//     *stack = top;
-// }
+    top = *stack;
+    tmp = *stack;
+    printf("Stack -> [ ");
+    while (tmp)
+    {
+        printf("%li ", tmp->num);
+        tmp = tmp->next;
+    }
+    printf ("]\n");
+    *stack = top;
+}
 
 int main(int argc,char **argv)
 {
@@ -84,15 +84,15 @@ int main(int argc,char **argv)
         ft_error();
     a = ft_get_stack(results);
     if (ft_is_duplicated(a) || !ft_is_invalid_input(a))
-        // printf ("2\n");
         ft_error();
     if (!ft_is_sorted(a))
     {
         if (ft_stack_size(a) <= 5)
-            printf ("Small sort\n");
+            ft_small_sort(a);
         else
             printf ("Radix sort\n");
     }
+    print_stack(a);
     return (0);
 }
 

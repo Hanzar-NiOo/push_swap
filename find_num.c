@@ -28,75 +28,92 @@ long    ft_min_num(t_stack **stack)
     return (min_num);
 }
 
-long    ft_max_num(t_stack **stack)
+int	ft_find_pos(t_stack **a, int value)
 {
-    t_stack *tmp;
-    long    max_num;
+	t_stack	*tmp;
+	int		i;
 
-    tmp = *stack;
-    max_num = tmp->num;
-    while (tmp)
-    {
-        if (tmp->num > max_num)
-            max_num = tmp->num;
-        tmp = tmp->next;
-    }
-    return (max_num);
+	tmp = *a;
+	i = 0;
+	while (tmp)
+	{
+		if (tmp->num == value)
+			return (i);
+		tmp = tmp->next;
+		i++;
+	}
+	return (-1);
 }
 
-long    ft_find_pos(t_stack **stack, long cur)
-{
-    t_stack *tmp;
-    long    max_num;
-    long    min_num;
+// long    ft_max_num(t_stack **stack)
+// {
+//     t_stack *tmp;
+//     long    max_num;
 
-    max_num = ft_max_num(stack);
-    min_num = ft_min_num(stack);
-    tmp = *stack;
-    if (cur > max_num || cur < min_num)
-        return (max_num);
-    else if (cur < tmp->num)
-    {
-        while (tmp->next && tmp->next->num != max_num)
-        {
-            if (cur < tmp->num && cur > tmp->next->num)
-                return (tmp->next->num);
-            tmp = tmp->next;
-        }
-    }
-    else
-    {
-        while (tmp->num != max_num)
-            tmp = tmp->next;
-        while (tmp->next)
-        {
-            if (cur < tmp->num && cur > tmp->next->num)
-                return (tmp->next->num);
-            tmp = tmp->next;
-        }
-    }
-    return (min_num);
-}
+//     tmp = *stack;
+//     max_num = tmp->num;
+//     while (tmp)
+//     {
+//         if (tmp->num > max_num)
+//             max_num = tmp->num;
+//         tmp = tmp->next;
+//     }
+//     return (max_num);
+// }
 
-long    ft_mid_num(t_stack **stack)
-{
-    t_stack *tmp;
-    long    idx;
-    long    mid;
-    long    result;
+// long    ft_find_pos(t_stack **stack, long cur)
+// {
+//     t_stack *tmp;
+//     long    max_num;
+//     long    min_num;
 
-    tmp = *stack;
-    if (ft_stack_size(stack) % 2 == 1)
-        mid = (ft_stack_size(stack) + 1) / 2;
-    else
-        mid = ft_stack_size(stack) / 2;
-    idx = 1;
-    while (tmp)
-    {
-        if (mid == idx)
-            result = tmp->num;
-        tmp = tmp->next;
-        idx++;
-    }
-    return (result);
-}
+//     max_num = ft_max_num(stack);
+//     min_num = ft_min_num(stack);
+//     tmp = *stack;
+//     if (cur > max_num || cur < min_num)
+//         return (max_num);
+//     else if (cur < tmp->num)
+//     {
+//         while (tmp->next && tmp->next->num != max_num)
+//         {
+//             if (cur < tmp->num && cur > tmp->next->num)
+//                 return (tmp->next->num);
+//             tmp = tmp->next;
+//         }
+//     }
+//     else
+//     {
+//         while (tmp->num != max_num)
+//             tmp = tmp->next;
+//         while (tmp->next)
+//         {
+//             if (cur < tmp->num && cur > tmp->next->num)
+//                 return (tmp->next->num);
+//             tmp = tmp->next;
+//         }
+//     }
+//     return (min_num);
+// }
+
+// long    ft_mid_num(t_stack **stack)
+// {
+//     t_stack *tmp;
+//     long    idx;
+//     long    mid;
+//     long    result;
+
+//     tmp = *stack;
+//     if (ft_stack_size(stack) % 2 == 1)
+//         mid = (ft_stack_size(stack) + 1) / 2;
+//     else
+//         mid = ft_stack_size(stack) / 2;
+//     idx = 1;
+//     while (tmp)
+//     {
+//         if (mid == idx)
+//             result = tmp->num;
+//         tmp = tmp->next;
+//         idx++;
+//     }
+//     return (result);
+// }
