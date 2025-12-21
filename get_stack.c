@@ -64,17 +64,17 @@ t_stack	**ft_get_stack(char **results)
 	return (a);
 }
 
-// long	ft_stack_size(t_stack **a)
-// {
-// 	t_stack	*node;
-// 	long	idx;
+long	ft_stack_size(t_stack **a)
+{
+	t_stack	*node;
+	long	idx;
 
-// 	idx = 0;
-// 	node = *a;
-// 	while (node)
-// 	{
-// 		idx++;
-// 		node = node->next;
-// 	}
-// 	return (idx);
-// }
+	idx = 0;
+	node = *a;
+	while (node)
+	{
+		idx++;
+		node = node->next;
+	}
+	return (idx);
+}
