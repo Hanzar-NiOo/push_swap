@@ -28,6 +28,22 @@ long    ft_min_num(t_stack **stack)
     return (min_num);
 }
 
+long    ft_max_num(t_stack **stack)
+{
+    t_stack *tmp;
+    long    max_num;
+
+    tmp = *stack;
+    max_num = tmp->num;
+    while (tmp)
+    {
+        if (tmp->num > max_num)
+            max_num = tmp->num;
+        tmp = tmp->next;
+    }
+    return (max_num);
+}
+
 int	ft_find_pos(t_stack **a, int value)
 {
 	t_stack	*tmp;
@@ -44,22 +60,6 @@ int	ft_find_pos(t_stack **a, int value)
 	}
 	return (-1);
 }
-
-// long    ft_max_num(t_stack **stack)
-// {
-//     t_stack *tmp;
-//     long    max_num;
-
-//     tmp = *stack;
-//     max_num = tmp->num;
-//     while (tmp)
-//     {
-//         if (tmp->num > max_num)
-//             max_num = tmp->num;
-//         tmp = tmp->next;
-//     }
-//     return (max_num);
-// }
 
 // long    ft_find_pos(t_stack **stack, long cur)
 // {

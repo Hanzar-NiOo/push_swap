@@ -74,6 +74,23 @@ static void    print_stack(t_stack **stack)
     *stack = top;
 }
 
+static void    print_idx(t_stack **stack)
+{
+    t_stack *top;
+    t_stack *tmp;
+
+    top = *stack;
+    tmp = *stack;
+    printf("Index -> [ ");
+    while (tmp)
+    {
+        printf("%li ", tmp->idx);
+        tmp = tmp->next;
+    }
+    printf ("]\n");
+    *stack = top;
+}
+
 int main(int argc,char **argv)
 {
     char    **results;
@@ -83,16 +100,17 @@ int main(int argc,char **argv)
     if (!ft_check_results(results))
         ft_error();
     a = ft_get_stack(results);
-    if (ft_is_duplicated(a) || !ft_is_invalid_input(a))
+    if (ft_is_duplicated(a) || !ft_is_valid_input(a))
         ft_error();
     if (!ft_is_sorted(a))
     {
         if (ft_stack_size(a) <= 5)
             ft_small_sort(a);
-        else
-            printf ("Radix sort\n");
+        // else
+        //     ft_radix_sort(a);
     }
     print_stack(a);
+    print_idx(a);
     return (0);
 }
 

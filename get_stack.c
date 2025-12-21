@@ -12,15 +12,32 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_new_node(long idx, long num)
+long ft_assign_idx(char **results, long num)
+{
+    long    idx;
+    long    assign_idx;
+    long    cmp_num;
+
+    idx = 0;
+    assign_idx = 0;
+    while (results[idx])
+    {
+        cmp_num = ft_atoi(results[idx++]);
+        if (cmp_num < num)
+            assign_idx++;
+    }
+    return (assign_idx);
+}
+
+t_stack	*ft_new_node(long num, char **results)
 {
 	t_stack	*node;
 
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
-	node->idx = idx;
 	node->num = num;
+    node->idx = ft_assign_idx(results, num);
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
@@ -57,7 +74,7 @@ t_stack	**ft_get_stack(char **results)
 	while (results[idx])
 	{
 		num = ft_atoi(results[idx]);
-		node = ft_new_node(idx, num);
+		node = ft_new_node(num, results);
 		ft_append_node(a, node);
 		idx++;
 	}

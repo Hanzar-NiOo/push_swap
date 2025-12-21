@@ -32,7 +32,7 @@ int	ft_is_duplicated(t_stack **a)
 	return (0);
 }
 
-int ft_is_invalid_input(t_stack **a)
+int ft_is_valid_input(t_stack **a)
 {
 	t_stack	*tmp;
 
