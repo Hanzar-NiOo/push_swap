@@ -36,17 +36,7 @@ void    ft_rrr(t_stack **a, t_stack **b);
 long    ft_min_num(t_stack **stack);
 long    ft_max_num(t_stack **stack);
 int	    ft_find_pos(t_stack **a, int value);
-// long    ft_find_pos(t_stack **stack, long cur);
-// long    ft_mid_num(t_stack **stack);
-// long    ft_get_count(t_stack **a, t_stack **b, long cur);
-// long    ft_best_num(t_stack **a, t_stack **b);
-// void    ft_sort_num(t_stack **a, t_stack **b);
 void    ft_small_sort(t_stack **a);
-// void    ft_radix_sort(t_stack **a);
-
-// void    print_stack(t_stack **stack);
-// void    print_stack_A(t_stack **stack);
-// void    print_stack_B(t_stack **stack);
-// t_top   *ft_get_top(t_stack **a, t_stack **b);
+void    ft_radix_sort(t_stack **a);
 
 #endif

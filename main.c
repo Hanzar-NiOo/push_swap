@@ -106,8 +106,8 @@ int main(int argc,char **argv)
     {
         if (ft_stack_size(a) <= 5)
             ft_small_sort(a);
-        // else
-        //     ft_radix_sort(a);
+        else
+            ft_radix_sort(a);
     }
     print_stack(a);
     print_idx(a);
