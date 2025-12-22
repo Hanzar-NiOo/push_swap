@@ -57,7 +57,7 @@ static int  ft_check_results(char **results)
     return (1);
 }
 
-static void    print_stack(t_stack **stack)
+void    print_stack(t_stack **stack)
 {
     t_stack *top;
     t_stack *tmp;
@@ -74,7 +74,7 @@ static void    print_stack(t_stack **stack)
     *stack = top;
 }
 
-static void    print_idx(t_stack **stack)
+void    print_idx(t_stack **stack)
 {
     t_stack *top;
     t_stack *tmp;

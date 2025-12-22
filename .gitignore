@@ -2,3 +2,10 @@ libft
 *.o
 push_swap
 Note.txt
+README.md
+README_ES.md
+push_swap_test.sh
+push_swap_test_linux.sh
+pro_checker
+checker_Mac
+checker_linux

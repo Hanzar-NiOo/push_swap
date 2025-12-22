@@ -39,4 +39,8 @@ int	    ft_find_pos(t_stack **a, int value);
 void    ft_small_sort(t_stack **a);
 void    ft_radix_sort(t_stack **a);
 
+// Test
+void    print_stack(t_stack **stack);
+void    print_idx(t_stack **stack);
+
 #endif
