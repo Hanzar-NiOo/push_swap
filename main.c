@@ -109,8 +109,6 @@ int main(int argc,char **argv)
         else
             ft_radix_sort(a);
     }
-    print_stack(a);
-    print_idx(a);
     return (0);
 }
 

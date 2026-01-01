@@ -34,7 +34,7 @@ long    ft_max_idx(t_stack **stack)
     long    max_idx;
 
     tmp = *stack;
-    max_idx = tmp->num;
+    max_idx = tmp->idx;
     while (tmp)
     {
         if (tmp->idx > max_idx)
@@ -44,10 +44,10 @@ long    ft_max_idx(t_stack **stack)
     return (max_idx);
 }
 
-static int	ft_find_pos2(t_stack **a, long idx)
+static long	ft_pos_in_stack(t_stack **a, long idx)
 {
 	t_stack	*tmp;
-	int		i;
+	long	i;
 
 	tmp = *a;
 	i = 0;
@@ -68,7 +68,7 @@ static long ft_find_idx_pos(long idx, t_stack **b)
     tmp = *b;
     if (idx > ft_max_idx(b) || idx < ft_min_idx(b))
         return (ft_max_idx(b));
-    else if (idx < tmp->idx)
+    else
     {
         while (tmp && tmp->next)
         {
@@ -76,38 +76,39 @@ static long ft_find_idx_pos(long idx, t_stack **b)
                 return (tmp->next->idx);
             tmp = tmp->next;
         }
+        if ((*b)->idx < idx && !tmp->next)
+            return ((*b)->idx);
     }
-    else if (idx > tmp->idx)
-    {
-        while (tmp && tmp->next)
-        {
-            if (tmp->idx < idx && tmp->next->idx > idx)
-                return (tmp->next->idx);
-            tmp = tmp->next;
-        }
-    }
-    return (0);
+    return (-1);
 }
 
 static long ft_ops_count(long idx, long pos, t_stack **a, t_stack **b)
 {
-    long    a_count;
-    long    b_count;
+    long    Pos_in_A;
+    long    Pos_in_B;
     long    result;
 
-    if (ft_find_pos2(a, idx) <= ft_stack_size(a) / 2)
-        a_count = ft_find_pos2(a, idx);
+    Pos_in_A = ft_pos_in_stack(a, idx);
+    Pos_in_B = ft_pos_in_stack(b, pos);
+    if ((Pos_in_A > (ft_stack_size(a)) / 2 && Pos_in_B <= (ft_stack_size(b)) / 2))
+        return (ft_stack_size(a) - Pos_in_A + Pos_in_B + 1);
+    else if (Pos_in_A <= (ft_stack_size(a)) / 2 && Pos_in_B > (ft_stack_size(b)) / 2)
+        return (Pos_in_A + ft_stack_size(b) - Pos_in_B + 1);
+    if (Pos_in_A >= Pos_in_B)
+    {
+        if (Pos_in_A <= ft_stack_size(a) / 2)
+            result = Pos_in_A;
+        else
+            result = ft_stack_size(a) - ft_pos_in_stack(a, idx);
+    }
     else
-        a_count = ft_stack_size(a) - ft_find_pos2(a, idx);
-    if (ft_find_pos2(b, pos) <= ft_stack_size(b) / 2)
-        b_count = ft_find_pos(b, pos);
-    else
-        b_count = ft_stack_size(b) - ft_find_pos2(b, pos);
-    if (a_count > b_count)
-        result = a_count + 1;
-    else
-        result = b_count + 1;
-    return (result);
+    {
+        if (Pos_in_B <= ft_stack_size(b) / 2)
+            result = Pos_in_B;
+        else
+            result = ft_stack_size(b) - ft_pos_in_stack(b, pos);
+    }
+    return (result + 1);
 }
 
 static long ft_cheapest_num(t_stack **a, t_stack **b)
@@ -118,12 +119,17 @@ static long ft_cheapest_num(t_stack **a, t_stack **b)
     long    best_idx;
 
     tmp = *a;
-    best_idx = tmp->idx;
+    // printf ("Start idx => %li\n", tmp->idx);
     pos = ft_find_idx_pos(tmp->idx, b);
+    // printf ("Pos in B => %li\n", pos);
     min_count = ft_ops_count(tmp->idx, pos, a, b);
+    // printf ("Min_count => %li\n", min_count);
+    best_idx = tmp->idx;
+    // printf ("Best_idx => %li\n", best_idx);
     while (tmp)
     {
         pos = ft_find_idx_pos(tmp->idx, b);
+        // printf ("Ops_count for %li = %li\n", tmp->idx, ft_ops_count(tmp->idx, pos, a, b));
         if (ft_ops_count(tmp->idx, pos, a, b) < min_count)
         {
             min_count = ft_ops_count(tmp->idx, pos, a, b);
@@ -131,6 +137,7 @@ static long ft_cheapest_num(t_stack **a, t_stack **b)
         }
         tmp = tmp->next;
     }
+    printf ("Best_idx (C) => %li\n", best_idx);
     return (best_idx);
 }
 
@@ -144,22 +151,111 @@ static long ft_cheapest_num(t_stack **a, t_stack **b)
 // 	return (bits);
 // }
 
+// static void pos_test(t_stack **a, t_stack **b)
+// {
+    // printf ("Stack_A => ");
+    // print_idx(a);
+    // printf ("Stack_B => ");
+    // print_idx(b);
+    // while ((*a))
+    // {
+    //     pos = ft_find_idx_pos((*a)->idx, b);
+    //     printf("Idx = %li, Pos = %li.\n", (*a)->idx,  ft_find_idx_pos((*a)->idx, b));
+    //     printf("Idx = %li, Ops_count = %li.\n", (*a)->idx,  ft_ops_count((*a)->idx, pos, a, b));
+    //     *a = (*a)->next;
+    // }
+// }
+
+static void ft_push_pattern(long idx, long pos, t_stack **a, t_stack **b)
+{
+    long    Pos_in_A;
+    long    Pos_in_B;
+
+    Pos_in_A = ft_pos_in_stack(a, idx);
+    Pos_in_B = ft_pos_in_stack(b, pos);
+    printf ("Idx = %li, Pos = %li\n", idx, pos);
+    printf ("Pos_in_A = %li, Pos_in_B = %li\n", ft_pos_in_stack(a, idx), ft_pos_in_stack(b, pos));
+    printf("Cheapest Num = %li, ops_count = %li\n", ft_cheapest_num(a, b), ft_ops_count(idx, pos, a, b));
+    if (Pos_in_A <= ft_stack_size(a)/2 && Pos_in_B <= ft_stack_size(b)/2)
+    {
+        while (Pos_in_A != 0 && Pos_in_B != 0)
+        {
+            ft_rr(a, b);
+            Pos_in_A--;
+            Pos_in_B--;
+        }
+    }
+    if (Pos_in_A > ft_stack_size(a)/2 && Pos_in_B > ft_stack_size(b)/2)
+    {
+        while (Pos_in_A != ft_stack_size(a) - 1 && Pos_in_B != ft_stack_size(b) - 1)
+        {
+            ft_rrr(a, b);
+            Pos_in_A++;
+            Pos_in_B++;
+        }
+    }
+    if (Pos_in_A <= ft_stack_size(a)/2)
+    {
+        while (Pos_in_A != 0)
+        {
+            ft_rb(a);
+            Pos_in_A--;
+        }
+    }
+    else
+    {
+        while (Pos_in_A != ft_stack_size(a))
+        {
+            ft_rrb(a);
+            Pos_in_A++;
+        }
+    }
+    if (Pos_in_B <= ft_stack_size(b)/2)
+    {
+        while (Pos_in_B != 0)
+        {
+            ft_rb(b);
+            Pos_in_B--;
+        }
+    }
+    else
+    {
+        while (Pos_in_B != ft_stack_size(b))
+        {
+            ft_rrb(b);
+            Pos_in_B++;
+        }
+    }
+}
+
 void    ft_radix_sort(t_stack **a)
 {
     t_stack **b;
+    long    idx;
+    long    pos;
 
     b = NULL;
     b = malloc(sizeof(t_stack *));
     ft_pb (a, b);
     ft_pb (a, b);
-    ft_pb (a, b);
-    ft_pb (a, b);
-    // ft_cheapest_num(t_stack **a, t_stack **b);
-    print_stack(b);
+    while (ft_stack_size(a) > 3)
+    {
+        idx = ft_cheapest_num(a, b);
+        pos = ft_find_idx_pos(idx, b);
+        ft_push_pattern(idx, pos, a, b);
+        ft_pb (a, b);
+    }
+    printf ("Stack_A => ");
+    print_idx(a);
+    printf ("Stack_B => ");
     print_idx(b);
-    long    idx = 4;
-    long    pos = ft_find_idx_pos(idx, b);
+    // printf ("Stack_A => ");
+    // print_idx(a);
+    // printf ("Stack_B => ");
+    // print_stack(b);
+    // print_idx(b);
+    // ft_ops_count(long idx, long pos, t_stack **a, t_stack **b);
     // printf("%li\n", ft_find_idx_pos(idx, b));
-    printf("%li\n", ft_ops_count(idx, pos, a, b));
-    printf("%li\n", ft_cheapest_num(a, b));
+    // printf("%li\n", ft_ops_count(idx, pos, a, b));
+    // printf("%li\n", ft_cheapest_num(a, b));
 }
