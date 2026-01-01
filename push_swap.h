@@ -36,6 +36,7 @@ void    ft_rrr(t_stack **a, t_stack **b);
 long    ft_min_num(t_stack **stack);
 long    ft_max_num(t_stack **stack);
 int	    ft_find_pos(t_stack **a, int value);
+void    ft_sort_three(t_stack **a);
 void    ft_small_sort(t_stack **a);
 void    ft_radix_sort(t_stack **a);
 

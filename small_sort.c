@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void    ft_sort_three(t_stack **a)
+void    ft_sort_three(t_stack **a)
 {
     int	first;
 	int	second;

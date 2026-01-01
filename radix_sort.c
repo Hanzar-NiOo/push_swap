@@ -233,6 +233,7 @@ void    ft_radix_sort(t_stack **a)
     t_stack **b;
     long    idx;
     long    pos;
+    long    max_pos_in_B;
 
     b = NULL;
     b = malloc(sizeof(t_stack *));
@@ -245,17 +246,26 @@ void    ft_radix_sort(t_stack **a)
         ft_push_pattern(idx, pos, a, b);
         ft_pb (a, b);
     }
+    ft_sort_three(a);
+    max_pos_in_B = ft_pos_in_stack(b, ft_max_idx(b));
+    if (max_pos_in_B <= ft_stack_size(b)/2)
+    {
+        while ((*b)->idx != ft_max_idx(b))
+            ft_rb (b);
+    }
+    else
+    {
+        while ((*b)->idx != ft_max_idx(b))
+            ft_rrb (b);
+    }
+    ft_rrb (a);
+    // while (ft_stack_size(b) != 0)
+    // {
+    //     if ((*a)->idx )
+    //     ft_pa(a, b);
+    // }
     printf ("Stack_A => ");
     print_idx(a);
     printf ("Stack_B => ");
     print_idx(b);
-    // printf ("Stack_A => ");
-    // print_idx(a);
-    // printf ("Stack_B => ");
-    // print_stack(b);
-    // print_idx(b);
-    // ft_ops_count(long idx, long pos, t_stack **a, t_stack **b);
-    // printf("%li\n", ft_find_idx_pos(idx, b));
-    // printf("%li\n", ft_ops_count(idx, pos, a, b));
-    // printf("%li\n", ft_cheapest_num(a, b));
 }
