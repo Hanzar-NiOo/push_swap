@@ -141,31 +141,6 @@ static long ft_cheapest_num(t_stack **a, t_stack **b)
     return (best_idx);
 }
 
-// static long	ft_max_bits(long num)
-// {
-// 	long	bits;
-
-// 	bits = 0;
-// 	while ((num >> bits) != 0)
-// 		bits++;
-// 	return (bits);
-// }
-
-// static void pos_test(t_stack **a, t_stack **b)
-// {
-    // printf ("Stack_A => ");
-    // print_idx(a);
-    // printf ("Stack_B => ");
-    // print_idx(b);
-    // while ((*a))
-    // {
-    //     pos = ft_find_idx_pos((*a)->idx, b);
-    //     printf("Idx = %li, Pos = %li.\n", (*a)->idx,  ft_find_idx_pos((*a)->idx, b));
-    //     printf("Idx = %li, Ops_count = %li.\n", (*a)->idx,  ft_ops_count((*a)->idx, pos, a, b));
-    //     *a = (*a)->next;
-    // }
-// }
-
 static void ft_push_pattern(long idx, long pos, t_stack **a, t_stack **b)
 {
     long    Pos_in_A;
@@ -258,12 +233,23 @@ void    ft_radix_sort(t_stack **a)
         while ((*b)->idx != ft_max_idx(b))
             ft_rrb (b);
     }
-    ft_rrb (a);
-    // while (ft_stack_size(b) != 0)
-    // {
-    //     if ((*a)->idx )
-    //     ft_pa(a, b);
-    // }
+    ft_sa (a);
+    ft_rra (a);
+    while (*b)
+    {
+        if ((*b)->idx > (*a)->idx)
+        {
+            ft_pa (a, b);
+            ft_ra (a);
+        }
+        else
+        {
+            while ((*b)->idx < (*a)->idx && (*a)->idx != ft_max_idx(a))
+                ft_ra (a);
+            ft_pa (a, b);
+        }
+    }
+    ft_ra (a);
     printf ("Stack_A => ");
     print_idx(a);
     printf ("Stack_B => ");
