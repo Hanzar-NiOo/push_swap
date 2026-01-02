@@ -119,17 +119,12 @@ static long ft_cheapest_num(t_stack **a, t_stack **b)
     long    best_idx;
 
     tmp = *a;
-    // printf ("Start idx => %li\n", tmp->idx);
     pos = ft_find_idx_pos(tmp->idx, b);
-    // printf ("Pos in B => %li\n", pos);
     min_count = ft_ops_count(tmp->idx, pos, a, b);
-    // printf ("Min_count => %li\n", min_count);
     best_idx = tmp->idx;
-    // printf ("Best_idx => %li\n", best_idx);
     while (tmp)
     {
         pos = ft_find_idx_pos(tmp->idx, b);
-        // printf ("Ops_count for %li = %li\n", tmp->idx, ft_ops_count(tmp->idx, pos, a, b));
         if (ft_ops_count(tmp->idx, pos, a, b) < min_count)
         {
             min_count = ft_ops_count(tmp->idx, pos, a, b);
@@ -137,7 +132,6 @@ static long ft_cheapest_num(t_stack **a, t_stack **b)
         }
         tmp = tmp->next;
     }
-    printf ("Best_idx (C) => %li\n", best_idx);
     return (best_idx);
 }
 
@@ -148,9 +142,6 @@ static void ft_push_pattern(long idx, long pos, t_stack **a, t_stack **b)
 
     Pos_in_A = ft_pos_in_stack(a, idx);
     Pos_in_B = ft_pos_in_stack(b, pos);
-    printf ("Idx = %li, Pos = %li\n", idx, pos);
-    printf ("Pos_in_A = %li, Pos_in_B = %li\n", ft_pos_in_stack(a, idx), ft_pos_in_stack(b, pos));
-    printf("Cheapest Num = %li, ops_count = %li\n", ft_cheapest_num(a, b), ft_ops_count(idx, pos, a, b));
     if (Pos_in_A <= ft_stack_size(a)/2 && Pos_in_B <= ft_stack_size(b)/2)
     {
         while (Pos_in_A != 0 && Pos_in_B != 0)
@@ -233,25 +224,19 @@ void    ft_radix_sort(t_stack **a)
         while ((*b)->idx != ft_max_idx(b))
             ft_rrb (b);
     }
-    ft_sa (a);
-    ft_rra (a);
+    ft_pa (a, b);
     while (*b)
     {
-        if ((*b)->idx > (*a)->idx)
-        {
-            ft_pa (a, b);
-            ft_ra (a);
-        }
+        if ((*a)->idx == (*b)->idx + 1)
+            ft_pa(a, b);
         else
         {
-            while ((*b)->idx < (*a)->idx && (*a)->idx != ft_max_idx(a))
-                ft_ra (a);
-            ft_pa (a, b);
+            ft_rra (a);
+            ft_pa(a, b);
         }
     }
-    ft_ra (a);
-    printf ("Stack_A => ");
-    print_idx(a);
-    printf ("Stack_B => ");
-    print_idx(b);
+    // printf ("Stack_A => ");
+    // print_idx(a);
+    // printf ("Stack_B => ");
+    // print_idx(b);
 }
