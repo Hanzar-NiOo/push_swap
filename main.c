@@ -101,7 +101,10 @@ int main(int argc,char **argv)
         ft_error();
     a = ft_get_stack(results);
     if (ft_is_duplicated(a) || !ft_is_valid_input(a))
+    {
+        printf("Input error!\n");
         ft_error();
+    }
     if (!ft_is_sorted(a))
     {
         if (ft_stack_size(a) <= 5)
@@ -109,6 +112,8 @@ int main(int argc,char **argv)
         else
             ft_radix_sort(a);
     }
+    print_idx (a);
+    // print_stack (a);
     return (0);
 }
 

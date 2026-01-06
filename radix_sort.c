@@ -227,16 +227,13 @@ void    ft_radix_sort(t_stack **a)
     ft_pa (a, b);
     while (*b)
     {
-        if ((*a)->idx == (*b)->idx + 1)
-            ft_pa(a, b);
-        else
-        {
+        if ((*a)->idx != (*b)->idx + 1)
             ft_rra (a);
-            ft_pa(a, b);
-        }
+        ft_pa (a, b);
     }
     // printf ("Stack_A => ");
     // print_idx(a);
     // printf ("Stack_B => ");
     // print_idx(b);
+    // print_stack(a);
 }

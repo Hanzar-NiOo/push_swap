@@ -1,4 +1,5 @@
 libft
+tester
 *.o
 push_swap
 Note.txt
