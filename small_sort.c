@@ -1,26 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 18:33:42 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/01 23:10:42 by hnioo            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        :::      ::::::::   */
+// /*   utils.c                                            :+:      :+:    :+:   */
+// /*                                                    +:+ +:+         +:+     */
+// /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
+// /*                                                +#+#+#+#+#+   +#+           */
+// /*   Created: 2025/12/01 18:33:42 by hnioo             #+#    #+#             */
+// /*   Updated: 2025/12/01 23:10:42 by hnioo            ###   ########.fr       */
+// /*                                                                            */
+// /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_sort_three(t_stack **a)
+void	ft_sort_three(t_stack **a)
 {
-    int	first;
+	int	first;
 	int	second;
 	int	third;
 
-	first = (*a)->num;
-	second = (*a)->next->num;
-	third = (*a)->next->next->num;
+	first = (*a)->idx;
+	second = (*a)->next->idx;
+	third = (*a)->next->next->idx;
 	if (first > second && second < third && first < third)
 		ft_sa(a);
 	else if (first > second && second > third)
@@ -39,52 +39,52 @@ void    ft_sort_three(t_stack **a)
 		ft_rra(a);
 }
 
-static void ft_min_move_top(t_stack **a, long size)
+static void	ft_min_move_top(t_stack **a, long size)
 {
-    int	    min;
-	int	    pos;
-    
-	min = ft_min_num(a);
-	pos = ft_find_pos(a, min);
-    if (pos == 1)
-        ft_ra (a);
-    else if (pos == 2)
-    {
-        ft_ra (a);
-        ft_ra (a);
-    }
-    else if (pos == 3)
-    {
-        if (size == 5)
-            ft_rra(a);
-        ft_rra(a);
-    }
-    else if (pos == 4)
-        ft_rra(a);
+	long	min;
+	long	pos;
+
+	min = ft_min_idx(a);
+	pos = ft_pos_in_stack(a, min);
+	if (pos == 1)
+		ft_ra (a);
+	else if (pos == 2)
+	{
+		ft_ra (a);
+		ft_ra (a);
+	}
+	else if (pos == 3)
+	{
+		if (size == 5)
+			ft_rra(a);
+		ft_rra(a);
+	}
+	else if (pos == 4)
+		ft_rra(a);
 }
 
-void    ft_small_sort(t_stack **a)
+void	ft_small_sort(t_stack **a)
 {
-    t_stack **b;
+	t_stack	**b;
 
-    b = NULL;
-    b = malloc(sizeof(t_stack *));
-    if (ft_stack_size(a) == 2)
-        ft_sa(a);
-    else if (ft_stack_size(a) == 3)
-        ft_sort_three(a);
-    else if (ft_stack_size(a) == 4 || ft_stack_size(a) == 5)
-    {
-        if (ft_stack_size(a) == 5)
-        {
-            ft_min_move_top(a, ft_stack_size(a));
-            ft_pb (a, b);
-        }
-        ft_min_move_top(a, ft_stack_size(a));
-        ft_pb (a, b);
-        ft_sort_three (a);
-        if (ft_stack_size(b) == 2)
-            ft_pa (a, b);
-        ft_pa (a, b);
-    }
+	b = NULL;
+	b = malloc(sizeof(t_stack *));
+	if (ft_stack_size(a) == 2)
+		ft_sa(a);
+	else if (ft_stack_size(a) == 3)
+		ft_sort_three(a);
+	else if (ft_stack_size(a) == 4 || ft_stack_size(a) == 5)
+	{
+		if (ft_stack_size(a) == 5)
+		{
+			ft_min_move_top(a, ft_stack_size(a));
+			ft_pb (a, b);
+		}
+		ft_min_move_top(a, ft_stack_size(a));
+		ft_pb (a, b);
+		ft_sort_three (a);
+		if (ft_stack_size(b) == 2)
+			ft_pa (a, b);
+		ft_pa (a, b);
+	}
 }

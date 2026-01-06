@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 10:24:14 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 13:36:51 by hnioo            ###   ########.fr       */
+/*   Updated: 2026/01/06 20:11:01 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_sb(t_stack **b)
 	*b = (*b)->next;
 	tmp->next = (*b)->next;
 	(*b)->next = tmp;
-    write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
 void	ft_pb(t_stack **stack_a, t_stack **stack_b)
@@ -35,7 +35,7 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = *stack_a;
 	*stack_a = (*stack_a)->next;
 	(*stack_b)->next = tmp;
-    write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }
 
 void	ft_rb(t_stack **b)
@@ -49,7 +49,7 @@ void	ft_rb(t_stack **b)
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
-    write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
 void	ft_rrb(t_stack **b)
@@ -73,5 +73,5 @@ void	ft_rrb(t_stack **b)
 		i--;
 	}
 	tmp->next = NULL;
-    write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }

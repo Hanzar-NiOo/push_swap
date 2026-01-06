@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 20:52:09 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 13:17:10 by hnioo            ###   ########.fr       */
+/*   Updated: 2026/01/06 19:10:32 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ int	ft_is_duplicated(t_stack **a)
 	return (0);
 }
 
-int ft_is_valid_input(t_stack **a)
+int	ft_is_valid_input(t_stack **a)
 {
 	t_stack	*tmp;
 
 	tmp = *a;
 	while (tmp && tmp->next)
 	{
-        if (tmp->num >= 2147483647)
-            return (0);
-        else if (tmp->num <= -2147483648)
-            return (0);
+		if (tmp->num >= 2147483647)
+			return (0);
+		else if (tmp->num <= -2147483648)
+			return (0);
 		tmp = tmp->next;
 	}
 	return (1);

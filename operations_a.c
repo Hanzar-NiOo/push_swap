@@ -6,7 +6,7 @@
 /*   By: hnioo <hnioo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 00:06:17 by hnioo             #+#    #+#             */
-/*   Updated: 2025/12/02 14:05:27 by hnioo            ###   ########.fr       */
+/*   Updated: 2026/01/06 20:09:38 by hnioo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_sa(t_stack **a)
 	*a = (*a)->next;
 	tmp->next = (*a)->next;
 	(*a)->next = tmp;
-    write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
 void	ft_pa(t_stack **a, t_stack **b)
@@ -35,7 +35,7 @@ void	ft_pa(t_stack **a, t_stack **b)
 	*a = *b;
 	*b = (*b)->next;
 	(*a)->next = tmp;
-    write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	ft_ra(t_stack **a)
@@ -49,7 +49,7 @@ void	ft_ra(t_stack **a)
 	(*a)->next = tmp;
 	*a = tmp->next;
 	tmp->next = NULL;
-    write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	ft_rra(t_stack **a)
@@ -73,5 +73,5 @@ void	ft_rra(t_stack **a)
 		i--;
 	}
 	tmp->next = NULL;
-    write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }

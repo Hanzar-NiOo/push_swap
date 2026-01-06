@@ -26,7 +26,7 @@ void	ft_ss(t_stack **a, t_stack **b)
 	*b = (*b)->next;
 	tmp->next = (*b)->next;
 	(*b)->next = tmp;
-    write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }
 
 void	ft_rr(t_stack **a, t_stack **b)
@@ -45,10 +45,10 @@ void	ft_rr(t_stack **a, t_stack **b)
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
-    write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }
 
-static void ft_rrr_sub(t_stack **b)
+static void	ft_rrr_sub(t_stack **b)
 {
 	t_stack	*tmp;
 	int		i;
@@ -67,7 +67,7 @@ static void ft_rrr_sub(t_stack **b)
 		i--;
 	}
 	tmp->next = NULL;
-    write(1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }
 
 void	ft_rrr(t_stack **a, t_stack **b)
