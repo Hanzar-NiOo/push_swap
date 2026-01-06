@@ -2,6 +2,8 @@ libft
 tester
 *.o
 push_swap
+push_swap_tester
+Push-Swap-Tester
 Note.txt
 README.md
 README_ES.md
